@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModalPickerSample", "ModalPickerSample.csproj", "{2570ED82-4EE9-4198-91A9-F4D0211AA973}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpMobileCode.ModalPicker", "SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.csproj", "{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpMobileCode.ModalPicker", "..\SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.csproj", "{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

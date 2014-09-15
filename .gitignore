@@ -1,0 +1,16 @@
+
+ModalPickerSample/bin/
+ModalPickerSample/obj/
+SharpMobileCode.ModalPicker/bin/
+SharpMobileCode.ModalPicker/obj/
+*.dll
+
+*.mdb
+
+*.exe
+
+*.mdb
+
+*.dll
+
+*.mdb

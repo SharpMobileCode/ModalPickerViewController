@@ -10,7 +10,7 @@
 	-sim \
 	/Users/rubenmacias/GitHub/ModalPicker/ModalPickerSample/bin/iPhoneSimulator/Debug/ModalPickerSample.app \
 	-r \
-	/Users/rubenmacias/GitHub/ModalPicker/ModalPickerSample/SharpMobileCode.ModalPicker/bin/Debug/SharpMobileCode.ModalPicker.dll \
+	/Users/rubenmacias/GitHub/ModalPicker/SharpMobileCode.ModalPicker/bin/Debug/SharpMobileCode.ModalPicker.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/2.1/System.dll \
 	-r \
