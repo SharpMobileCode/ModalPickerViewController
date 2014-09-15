@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModalPickerSample", "ModalPickerSample.csproj", "{2570ED82-4EE9-4198-91A9-F4D0211AA973}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpMobileCode.ModalPicker", "SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.csproj", "{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2570ED82-4EE9-4198-91A9-F4D0211AA973}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{2570ED82-4EE9-4198-91A9-F4D0211AA973}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{2570ED82-4EE9-4198-91A9-F4D0211AA973}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{2570ED82-4EE9-4198-91A9-F4D0211AA973}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{2570ED82-4EE9-4198-91A9-F4D0211AA973}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{2570ED82-4EE9-4198-91A9-F4D0211AA973}.Debug|iPhone.Build.0 = Debug|iPhone
+		{2570ED82-4EE9-4198-91A9-F4D0211AA973}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{2570ED82-4EE9-4198-91A9-F4D0211AA973}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{2570ED82-4EE9-4198-91A9-F4D0211AA973}.Release|iPhone.ActiveCfg = Release|iPhone
+		{2570ED82-4EE9-4198-91A9-F4D0211AA973}.Release|iPhone.Build.0 = Release|iPhone
+		{2570ED82-4EE9-4198-91A9-F4D0211AA973}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{2570ED82-4EE9-4198-91A9-F4D0211AA973}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}.Release|iPhone.Build.0 = Release|Any CPU
+		{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = ModalPickerSample.csproj
+	EndGlobalSection
+EndGlobal
