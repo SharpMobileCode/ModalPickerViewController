@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Modalpicker by SharpMobileCode</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Modalpicker</h1>
+        <p>A Modal Picker that replaces the ActionSheetDatePicker for Xamarin.iOS</p>
+
+        <p class="view"><a href="https://github.com/SharpMobileCode/ModalPicker">View the Project on GitHub <small>SharpMobileCode/ModalPicker</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/SharpMobileCode/ModalPicker/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/SharpMobileCode/ModalPicker/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/SharpMobileCode/ModalPicker">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="modalpickerviewcontroller" class="anchor" href="#modalpickerviewcontroller"><span class="octicon octicon-link"></span></a>ModalPickerViewController</h1>
+
+<p>The ModalPickerViewController is a view controller that is designed to replace <a href="http://developer.xamarin.com/recipes/ios/standard_controls/actionsheet/actionsheet_date_picker/">ActionSheetDatePicker</a>.  The ActionSheetDatePicker was an example provided by Xamarin to show a nice looking Date Picker that did not take up the whole screen.</p>
+
+<p>Though this did do the job, the UIActionSheet was not designed to be subclassed or views added to its hierarchy.  Starting with iOS 7, Apple started issuing runtime warnings, but did not crash the app.  The warnings looked something like this:</p>
+
+<blockquote>
+<p>Error: CGContextSetFillColorWithColor: invalid context 0x0. This is a serious error. 
+This application, or a library it uses, is using an invalid context  and is thereby contributing 
+to an overall degradation of system stability and reliability. 
+This notice is a courtesy: please fix this problem. 
+It will become a fatal error in an upcoming update.</p>
+</blockquote>
+
+<p>Notice the last two lines of the warning.  Apple was warning developers in iOS 7 that this was not the way the UIActionSheet was intended to be used, and that it will <strong>BREAK</strong> in a future version of iOS.  Well, it now crashes on iOS 8.</p>
+
+<h2>
+<a name="example-usage" class="anchor" href="#example-usage"><span class="octicon octicon-link"></span></a>Example Usage</h2>
+
+<p>Please see the blog post at <a href="http://sharpmobilecode.com">http://sharpmobilecode.com</a> for example usage</p>
+
+<h2>
+<a name="areas-for-improvement" class="anchor" href="#areas-for-improvement"><span class="octicon octicon-link"></span></a>Areas For Improvement</h2>
+
+<p>When you rotate between Portrait and Landscape, the transition is not as smooth as I would like it to be.  Feel free to submit a pull request and take a shot at it!  :)</p>
+
+<h2>
+<a name="contributors" class="anchor" href="#contributors"><span class="octicon octicon-link"></span></a>Contributors</h2>
+
+<p>Ruben Macias <a href="https://github.com/sharpmobilecode" class="user-mention">@sharpmobilecode</a></p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/SharpMobileCode">SharpMobileCode</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-54458888-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
