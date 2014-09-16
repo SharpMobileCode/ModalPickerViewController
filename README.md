@@ -13,6 +13,8 @@ Though this did do the job, the UIActionSheet was not designed to be subclassed 
 
 Notice the last two lines of the warning.  Apple was warning developers in iOS 7 that this was not the way the UIActionSheet was intended to be used, and that it will **BREAK** in a future version of iOS.  Well, it now crashes on iOS 8.
 
+![Date Picker Screenshot](http://sharpmobilecode.com/wp-content/uploads/2014/09/DatePicker.png)![Custom Picker Screenshot](http://sharpmobilecode.com/wp-content/uploads/2014/09/CustomPicker.png)
+
 ## Example Usage
 Please see the blog post at [http://sharpmobilecode.com](http://sharpmobilecode.com) for example usage
 
