@@ -16,7 +16,7 @@ Notice the last two lines of the warning.  Apple was warning developers in iOS 7
 ![Date Picker Screenshot](http://sharpmobilecode.com/wp-content/uploads/2014/09/DatePicker.png)![Custom Picker Screenshot](http://sharpmobilecode.com/wp-content/uploads/2014/09/CustomPicker.png)
 
 ## Example Usage
-Please see the blog post at [http://sharpmobilecode.com](http://sharpmobilecode.com) for example usage
+Please see the blog post at [http://sharpmobilecode.com/a-replacement-for-actionsheet-date-picker/](http://sharpmobilecode.com/a-replacement-for-actionsheet-date-picker/) for example usage
 
 ## Areas For Improvement
 When you rotate between Portrait and Landscape, the transition is not as smooth as I would like it to be.  Feel free to submit a pull request and take a shot at it!  :)
