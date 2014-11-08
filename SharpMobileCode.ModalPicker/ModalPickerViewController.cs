@@ -180,7 +180,7 @@ namespace SharpMobileCode.ModalPicker
             switch(_pickerType)
             {
                 case ModalPickerType.Date:
-                    DatePicker.Frame = new RectangleF(DatePicker.Frame.X, _headerBarHeight, DatePicker.Frame.Width,
+                    DatePicker.Frame = new RectangleF(DatePicker.Frame.X, _headerBarHeight, _internalView.Frame.Width,
                                                       DatePicker.Frame.Height);
                     break;
                 case ModalPickerType.Custom:
