@@ -87,13 +87,11 @@ namespace SharpMobileCode.ModalPicker
 			CancelButton.SetTitleColor(HeaderTextColor, UIControlState.Normal);
 			CancelButton.BackgroundColor = UIColor.Clear;
 			CancelButton.SetTitle(CancelButtonText, UIControlState.Normal);
-			CancelButton.TouchUpInside += CancelButtonTapped;
 
 			DoneButton = UIButton.FromType(UIButtonType.System);
 			DoneButton.SetTitleColor(HeaderTextColor, UIControlState.Normal);
 			DoneButton.BackgroundColor = UIColor.Clear;
 			DoneButton.SetTitle(DoneButtonText, UIControlState.Normal);
-			DoneButton.TouchUpInside += DoneButtonTapped;
 		}
 
 		public override void ViewDidLoad()
@@ -137,6 +135,9 @@ namespace SharpMobileCode.ModalPicker
 				break;
 			}
 			_internalView.BackgroundColor = HeaderBackgroundColor;
+
+			CancelButton.TouchUpInside += CancelButtonTapped;
+			DoneButton.TouchUpInside += DoneButtonTapped;
 
 			_internalView.AddSubview(_headerLabel);
 			_internalView.AddSubview (CancelButton);
