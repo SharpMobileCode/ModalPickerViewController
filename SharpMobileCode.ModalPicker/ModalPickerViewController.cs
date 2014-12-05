@@ -23,205 +23,232 @@ using System.Drawing;
 
 namespace SharpMobileCode.ModalPicker
 {
-    public delegate void ModalPickerDimissedEventHandler(object sender, EventArgs e);
+	public delegate void ModalPickerDimissedEventHandler(object sender, EventArgs e);
 
-    public class ModalPickerViewController : UIViewController
-    {
-        public event ModalPickerDimissedEventHandler OnModalPickerDismissed;
-        const float _headerBarHeight = 40;
+	public class ModalPickerViewController : UIViewController
+	{
+		public event ModalPickerDimissedEventHandler OnModalPickerDismissed;
+		const float _headerBarHeight = 40;
 
-        public UIColor HeaderBackgroundColor { get; set; }
-        public UIColor HeaderTextColor { get; set; }
-        public string HeaderText { get; set; }
+		public UIColor HeaderBackgroundColor { get; set; }
+		public UIColor HeaderTextColor { get; set; }
+		public string HeaderText { get; set; }
+		public UIFont HeaderFont { get; set; }
 
-        public UIDatePicker DatePicker { get; set; }
-        public UIPickerView PickerView { get; set; }
-        private ModalPickerType _pickerType;
-        public ModalPickerType PickerType 
-        { 
-            get { return _pickerType; }
-            set
-            {
-                switch(value)
-                {
-                    case ModalPickerType.Date:
-                        DatePicker = new UIDatePicker(RectangleF.Empty);
-                        PickerView = null;
-                        break;
-                    case ModalPickerType.Custom:
-                        DatePicker = null;
-                        PickerView = new UIPickerView(RectangleF.Empty);
-                        break;
-                    default:
-                        break;
-                }
+		public UIButton DoneButton { get; set; }
+		public string DoneButtonText { get; set; }
 
-                _pickerType = value;
-            }
-        }
+		public UIButton CancelButton { get; set; }
+		public string CancelButtonText { get; set; }
 
-        UILabel _headerLabel;
-        UIButton _doneButton;
-        UIViewController _parent;
-        UIView _internalView;
+		public UIDatePicker DatePicker { get; set; }
+		public UIPickerView PickerView { get; set; }
+		private ModalPickerType _pickerType;
+		public ModalPickerType PickerType 
+		{ 
+			get { return _pickerType; }
+			set
+			{
+				switch(value)
+				{
+				case ModalPickerType.Date:
+					DatePicker = new UIDatePicker(RectangleF.Empty);
+					PickerView = null;
+					break;
+				case ModalPickerType.Custom:
+					DatePicker = null;
+					PickerView = new UIPickerView(RectangleF.Empty);
+					break;
+				default:
+					break;
+				}
 
-        public ModalPickerViewController(ModalPickerType pickerType, string headerText, UIViewController parent)
-        {
-            HeaderBackgroundColor = UIColor.White;
-            HeaderTextColor = UIColor.Black;
-            HeaderText = headerText;
-            PickerType = pickerType;
-            _parent = parent;
-        }
+				_pickerType = value;
+			}
+		}
 
-        public override void ViewDidLoad()
-        {
-            base.ViewDidLoad();
+		UILabel _headerLabel;
+		UIViewController _parent;
+		UIView _internalView;
 
-            InitializeControls();
-        }
+		public ModalPickerViewController(ModalPickerType pickerType, string headerText, UIViewController parent)
+		{
+			HeaderBackgroundColor = UIColor.White;
+			HeaderTextColor = UIColor.Black;
+			HeaderFont = UIFont.SystemFontOfSize (UIFont.SystemFontSize);
+			HeaderText = headerText;
+			PickerType = pickerType;
+			_parent = parent;
 
-        public override void ViewWillAppear(bool animated)
-        {
-            base.ViewDidAppear(animated);
+			DoneButtonText = "Done";
+			CancelButtonText = "Cancel";
 
-            Show();
-        }
+			CancelButton = UIButton.FromType(UIButtonType.System);
+			CancelButton.SetTitleColor(HeaderTextColor, UIControlState.Normal);
+			CancelButton.BackgroundColor = UIColor.Clear;
+			CancelButton.SetTitle(CancelButtonText, UIControlState.Normal);
 
-        void InitializeControls()
-        {
-            View.BackgroundColor = UIColor.Clear;
-            _internalView = new UIView();
+			DoneButton = UIButton.FromType(UIButtonType.System);
+			DoneButton.SetTitleColor(HeaderTextColor, UIControlState.Normal);
+			DoneButton.BackgroundColor = UIColor.Clear;
+			DoneButton.SetTitle(DoneButtonText, UIControlState.Normal);
+		}
 
-            _headerLabel = new UILabel(new RectangleF(0, 0, 320/2, 44));
-            _headerLabel.AutoresizingMask = UIViewAutoresizing.FlexibleWidth;
-            _headerLabel.BackgroundColor = HeaderBackgroundColor;
-            _headerLabel.TextColor = HeaderTextColor;
-            _headerLabel.Text = HeaderText;
+		public override void ViewDidLoad()
+		{
+			base.ViewDidLoad();
 
-            _doneButton = UIButton.FromType(UIButtonType.System);
-            _doneButton.SetTitleColor(HeaderTextColor, UIControlState.Normal);
-            _doneButton.BackgroundColor = UIColor.Clear;
-            _doneButton.SetTitle("Done", UIControlState.Normal);
-            _doneButton.TouchUpInside += DoneButtonTapped;
+			InitializeControls();
+		}
 
-            switch(PickerType)
-            {
-                case ModalPickerType.Date:
-                    DatePicker.BackgroundColor = UIColor.White;
-                    _internalView.AddSubview(DatePicker);
-                    break;
-                case ModalPickerType.Custom:
-                    PickerView.BackgroundColor = UIColor.White;
-                    _internalView.AddSubview(PickerView);
-                    break;
-                default:
-                    break;
-            }
-            _internalView.BackgroundColor = HeaderBackgroundColor;
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewDidAppear(animated);
 
-            _internalView.AddSubview(_headerLabel);
-            _internalView.AddSubview(_doneButton);
+			Show();
+		}
 
-            Add(_internalView);
-        }
+		void InitializeControls()
+		{
+			View.BackgroundColor = UIColor.Clear;
+			_internalView = new UIView();
 
-        void Show(bool onRotate = false)
-        {
-            var doneButtonSize = new Size(71, 30);
+			_headerLabel = new UILabel(new RectangleF(0, 0, 320/2, 44));
+			_headerLabel.AutoresizingMask = UIViewAutoresizing.FlexibleWidth;
+			_headerLabel.BackgroundColor = HeaderBackgroundColor;
+			_headerLabel.TextColor = HeaderTextColor;
+			_headerLabel.Text = HeaderText;
+			_headerLabel.TextAlignment = UITextAlignment.Center;
+			_headerLabel.Font = HeaderFont;
 
-            var width = UIApplication.SharedApplication.StatusBarOrientation == UIInterfaceOrientation.Portrait ? 
-                _parent.View.Frame.Width : _parent.View.Frame.Height;
+			switch(PickerType)
+			{
+			case ModalPickerType.Date:
+				DatePicker.BackgroundColor = UIColor.White;
+				_internalView.AddSubview(DatePicker);
+				break;
+			case ModalPickerType.Custom:
+				PickerView.BackgroundColor = UIColor.White;
+				_internalView.AddSubview(PickerView);
+				break;
+			default:
+				break;
+			}
+			_internalView.BackgroundColor = HeaderBackgroundColor;
 
-            var internalViewSize = SizeF.Empty;
-            switch(_pickerType)
-            {
-                case ModalPickerType.Date:
-                    DatePicker.Frame = RectangleF.Empty;
-                    internalViewSize = new SizeF(width, DatePicker.Frame.Height + _headerBarHeight);
-                    break;
-                case ModalPickerType.Custom:
-                    PickerView.Frame = RectangleF.Empty;
-                    internalViewSize = new SizeF(width, PickerView.Frame.Height + _headerBarHeight);
-                    break;
-                default:
-                    break;
-            }
+			CancelButton.TouchUpInside += CancelButtonTapped;
+			DoneButton.TouchUpInside += DoneButtonTapped;
 
-            var internalViewFrame = RectangleF.Empty;
-            if (InterfaceOrientation == UIInterfaceOrientation.Portrait)
-            {
-                if (onRotate)
-                {
-                    internalViewFrame = new RectangleF(0, View.Frame.Height - internalViewSize.Height,
-                                                       internalViewSize.Width, internalViewSize.Height);
-                }
-                else
-                {
-                    internalViewFrame = new RectangleF(0, View.Bounds.Height - internalViewSize.Height,
-                                                       internalViewSize.Width, internalViewSize.Height);
-                }
-            }
-            else
-            {
-                if (onRotate)
-                {
-                    internalViewFrame = new RectangleF(0, View.Frame.Width - internalViewSize.Height,
-                                                       internalViewSize.Width, internalViewSize.Height);
-                }
-                else
-                {
-                    internalViewFrame = new RectangleF(0, View.Bounds.Width - internalViewSize.Height,
-                                                       internalViewSize.Width, internalViewSize.Height);
-                }
-            }
-            _internalView.Frame = internalViewFrame;
+			_internalView.AddSubview(_headerLabel);
+			_internalView.AddSubview (CancelButton);
+			_internalView.AddSubview(DoneButton);
 
-            switch(_pickerType)
-            {
-                case ModalPickerType.Date:
-                    DatePicker.Frame = new RectangleF(DatePicker.Frame.X, _headerBarHeight, DatePicker.Frame.Width,
-                                                      DatePicker.Frame.Height);
-                    break;
-                case ModalPickerType.Custom:
-                    PickerView.Frame = new RectangleF(PickerView.Frame.X, _headerBarHeight, _internalView.Frame.Width,
-                                                      PickerView.Frame.Height);
-                    break;
-                default:
-                    break;
-            }
+			Add(_internalView);
+		}
 
-            _headerLabel.Frame = new RectangleF(10, 4, _parent.View.Frame.Width - 100, 35);
-            _doneButton.Frame = new RectangleF(internalViewFrame.Width - doneButtonSize.Width - 10, 7, doneButtonSize.Width, doneButtonSize.Height);
-        }
+		void Show(bool onRotate = false)
+		{
+			var buttonSize = new Size(71, 30);
 
-        void DoneButtonTapped (object sender, EventArgs e)
-        {
-            DismissViewController(true, null);
-            if(OnModalPickerDismissed != null)
-            {
-                OnModalPickerDismissed(sender, e);
-            }
-        }
+			var width = _parent.View.Frame.Width;
 
-        public override void DidRotate(UIInterfaceOrientation fromInterfaceOrientation)
-        {
-            base.DidRotate(fromInterfaceOrientation);
+			var internalViewSize = SizeF.Empty;
+			switch(_pickerType)
+			{
+			case ModalPickerType.Date:
+				DatePicker.Frame = RectangleF.Empty;
+				internalViewSize = new SizeF(width, DatePicker.Frame.Height + _headerBarHeight);
+				break;
+			case ModalPickerType.Custom:
+				PickerView.Frame = RectangleF.Empty;
+				internalViewSize = new SizeF(width, PickerView.Frame.Height + _headerBarHeight);
+				break;
+			default:
+				break;
+			}
 
-            if (InterfaceOrientation == UIInterfaceOrientation.Portrait ||
-                InterfaceOrientation == UIInterfaceOrientation.LandscapeLeft ||
-                InterfaceOrientation == UIInterfaceOrientation.LandscapeRight)
-            {
-                Show(true);
-                View.SetNeedsDisplay();
-            }
-        }
-    }
+			var internalViewFrame = RectangleF.Empty;
+			if (InterfaceOrientation == UIInterfaceOrientation.Portrait)
+			{
+				if (onRotate)
+				{
+					internalViewFrame = new RectangleF(0, View.Frame.Height - internalViewSize.Height,
+						internalViewSize.Width, internalViewSize.Height);
+				}
+				else
+				{
+					internalViewFrame = new RectangleF(0, View.Bounds.Height - internalViewSize.Height,
+						internalViewSize.Width, internalViewSize.Height);
+				}
+			}
+			else
+			{
+				if (onRotate)
+				{
+					internalViewFrame = new RectangleF(0, View.Bounds.Height - internalViewSize.Height,
+						internalViewSize.Width, internalViewSize.Height);
+				}
+				else
+				{
+					internalViewFrame = new RectangleF(0, View.Frame.Height - internalViewSize.Height,
+						internalViewSize.Width, internalViewSize.Height);
+				}
+			}
+			_internalView.Frame = internalViewFrame;
 
-    public enum ModalPickerType
-    {
-        Date = 0,
-        Custom = 1
-    }
+			switch(_pickerType)
+			{
+			case ModalPickerType.Date:
+				var pickerWidth = DatePicker.Frame.Width;
+				var xOffset = (width - pickerWidth) / 2.0f;
+				DatePicker.Frame = new RectangleF(xOffset, _headerBarHeight, pickerWidth,
+					DatePicker.Frame.Height);
+				break;
+			case ModalPickerType.Custom:
+				PickerView.Frame = new RectangleF(PickerView.Frame.X, _headerBarHeight, _internalView.Frame.Width,
+					PickerView.Frame.Height);
+				break;
+			default:
+				break;
+			}
+
+			_headerLabel.Frame = new RectangleF(20+buttonSize.Width, 4, _parent.View.Frame.Width - (40+2*buttonSize.Width), 35);
+			DoneButton.Frame = new RectangleF(internalViewFrame.Width - buttonSize.Width - 10, 7, buttonSize.Width, buttonSize.Height);
+			CancelButton.Frame = new RectangleF(10, 7, buttonSize.Width, buttonSize.Height);
+		}
+
+		void DoneButtonTapped (object sender, EventArgs e)
+		{
+			DismissViewController(true, null);
+			if(OnModalPickerDismissed != null)
+			{
+				OnModalPickerDismissed(sender, e);
+			}
+		}
+
+		void CancelButtonTapped (object sender, EventArgs e)
+		{
+			DismissViewController(true, null);
+		}
+
+		public override void DidRotate(UIInterfaceOrientation fromInterfaceOrientation)
+		{
+			base.DidRotate(fromInterfaceOrientation);
+
+			if (InterfaceOrientation == UIInterfaceOrientation.Portrait ||
+				InterfaceOrientation == UIInterfaceOrientation.LandscapeLeft ||
+				InterfaceOrientation == UIInterfaceOrientation.LandscapeRight)
+			{
+				Show(true);
+				View.SetNeedsDisplay();
+			}
+		}
+	}
+
+	public enum ModalPickerType
+	{
+		Date = 0,
+		Custom = 1
+	}
 }
 
