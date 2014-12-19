@@ -39,11 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CustomPickerModel.cs" />
-    <Compile Include="ModalPickerAnimatedDismissed.cs" />
-    <Compile Include="ModalPickerAnimatedTransitioning.cs" />
-    <Compile Include="ModalPickerTransitionDelegate.cs" />
-    <Compile Include="ModalPickerViewController.cs" />
   </ItemGroup>
+  <Import Project="SharpMobileCode.ModalPicker.projitems" Label="Shared" Condition="Exists('SharpMobileCode.ModalPicker.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
 </Project>

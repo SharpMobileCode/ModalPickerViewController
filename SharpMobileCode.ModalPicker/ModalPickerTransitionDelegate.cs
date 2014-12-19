@@ -18,7 +18,12 @@
  */
 
 using System;
+
+#if __UNIFIED__
+using UIKit;
+#else
 using MonoTouch.UIKit;
+#endif
 
 namespace SharpMobileCode.ModalPicker
 {
@@ -28,8 +33,12 @@ namespace SharpMobileCode.ModalPicker
         {
         }
 
+		#if __UNIFIED__
+		public override IUIViewControllerAnimatedTransitioning GetAnimationControllerForPresentedController (UIViewController presented, UIViewController presenting, UIViewController source)
+		#else
         public override IUIViewControllerAnimatedTransitioning PresentingController(UIViewController presented, UIViewController presenting, UIViewController source)
-        {
+        #endif
+		{
             var controller = new ModalPickerAnimatedTransitioning();
             controller.IsPresenting = true;
 
