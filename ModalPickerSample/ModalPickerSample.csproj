@@ -105,9 +105,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.csproj">
+    <ProjectReference Include="..\SharpMobileCode.ModalPicker\SharpMobileCode.ModalPicker.Classic.csproj">
       <Project>{D8D8ED2E-2C43-416B-8196-46A0AD9788FD}</Project>
-      <Name>SharpMobileCode.ModalPicker</Name>
+      <Name>SharpMobileCode.ModalPicker.Classic</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
