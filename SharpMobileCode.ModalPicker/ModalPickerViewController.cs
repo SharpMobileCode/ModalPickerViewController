@@ -33,6 +33,7 @@ namespace SharpMobileCode.ModalPicker
         public UIColor HeaderBackgroundColor { get; set; }
         public UIColor HeaderTextColor { get; set; }
         public string HeaderText { get; set; }
+        public string DoneButtonText { get; set; }
 
         public UIDatePicker DatePicker { get; set; }
         public UIPickerView PickerView { get; set; }
@@ -70,8 +71,12 @@ namespace SharpMobileCode.ModalPicker
             HeaderBackgroundColor = UIColor.White;
             HeaderTextColor = UIColor.Black;
             HeaderText = headerText;
+            DoneButtonText = "Done"; // Default value
             PickerType = pickerType;
             _parent = parent;
+
+            TransitioningDelegate = new ModalPickerTransitionDelegate();
+            ModalPresentationStyle = UIModalPresentationStyle.Custom;
         }
 
         public override void ViewDidLoad()
@@ -102,7 +107,7 @@ namespace SharpMobileCode.ModalPicker
             _doneButton = UIButton.FromType(UIButtonType.System);
             _doneButton.SetTitleColor(HeaderTextColor, UIControlState.Normal);
             _doneButton.BackgroundColor = UIColor.Clear;
-            _doneButton.SetTitle("Done", UIControlState.Normal);
+            _doneButton.SetTitle(DoneButtonText, UIControlState.Normal);
             _doneButton.TouchUpInside += DoneButtonTapped;
 
             switch(PickerType)

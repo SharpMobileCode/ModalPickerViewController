@@ -63,8 +63,7 @@ namespace ModalPickerSample
             {
                 HeaderBackgroundColor = UIColor.Red,
                 HeaderTextColor = UIColor.White,
-                TransitioningDelegate = new ModalPickerTransitionDelegate(),
-                ModalPresentationStyle = UIModalPresentationStyle.Custom
+                DoneButtonText = "Save"
             };
 
             modalPicker.DatePicker.Mode = UIDatePickerMode.Date;
@@ -95,9 +94,7 @@ namespace ModalPickerSample
             var modalPicker = new ModalPickerViewController(ModalPickerType.Custom, "Select A Date", this)
             {
                 HeaderBackgroundColor = UIColor.Blue,
-                HeaderTextColor = UIColor.White,
-                TransitioningDelegate = new ModalPickerTransitionDelegate(),
-                ModalPresentationStyle = UIModalPresentationStyle.Custom
+                HeaderTextColor = UIColor.White
             };
 
             //Create the model for the Picker View
