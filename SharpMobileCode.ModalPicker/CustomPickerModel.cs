@@ -18,8 +18,8 @@
  */
 
 using System;
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 using System.Collections.Generic;
 
 namespace SharpMobileCode.ModalPicker
@@ -33,22 +33,22 @@ namespace SharpMobileCode.ModalPicker
             _itemsList = itemsList;
         }
 
-        public override int GetComponentCount(UIPickerView picker)
+        public override nint GetComponentCount(UIPickerView picker)
         {
             return 1;
         }
 
-        public override int GetRowsInComponent(UIPickerView picker, int component)
+        public override nint GetRowsInComponent(UIPickerView picker, nint component)
         {
             return _itemsList.Count;
         }
 
-        public override UIView GetView(UIPickerView picker, int row, int component, UIView view)
+        public override UIView GetView(UIPickerView picker, nint row, nint component, UIView view)
         {
-            var label = new UILabel(new RectangleF(0, 0, 300, 37))
+            var label = new UILabel(new CGRect(0, 0, 300, 37))
             {
                 BackgroundColor = UIColor.Clear,
-                Text = _itemsList[row],
+                Text = _itemsList[(int)row],
                 TextAlignment = UITextAlignment.Center,
                 Font = UIFont.BoldSystemFontOfSize(22.0f)
             };

@@ -1,8 +1,15 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4.7.1" />
+﻿<Properties StartupItem="ModalPickerSample.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone5s.8.1" />
   <MonoDevelop.Ide.Workbench ActiveDocument="ModalPickerSampleViewController.cs">
     <Files>
-      <File FileName="ModalPickerSampleViewController.cs" Line="43" Column="43" />
+      <File FileName="ModalPickerSampleViewController.cs" Line="13" Column="13" />
+      <File FileName="../SharpMobileCode.ModalPicker/CustomPickerModel.cs" Line="34" Column="34" />
+      <File FileName="../SharpMobileCode.ModalPicker/ModalPickerAnimatedDismissed.cs" Line="1" Column="1" />
+      <File FileName="../SharpMobileCode.ModalPicker/ModalPickerAnimatedTransitioning.cs" Line="1" Column="1" />
+      <File FileName="../SharpMobileCode.ModalPicker/ModalPickerTransitionDelegate.cs" Line="1" Column="1" />
+      <File FileName="../SharpMobileCode.ModalPicker/ModalPickerViewController.cs" Line="5" Column="5" />
+      <File FileName="AppDelegate.cs" Line="1" Column="1" />
+      <File FileName="Main.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

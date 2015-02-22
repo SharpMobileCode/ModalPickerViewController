@@ -18,8 +18,8 @@
  */
 
 using System;
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 
 namespace SharpMobileCode.ModalPicker
 {
@@ -54,13 +54,13 @@ namespace SharpMobileCode.ModalPicker
                 switch(fromViewController.InterfaceOrientation)
                 {
                     case UIInterfaceOrientation.Portrait:
-                        fromViewController.View.Frame = new RectangleF(0, screenBounds.Height, fromFrame.Width, fromFrame.Height);
+                        fromViewController.View.Frame = new CGRect(0, screenBounds.Height, fromFrame.Width, fromFrame.Height);
                         break;
                     case UIInterfaceOrientation.LandscapeLeft:
-                        fromViewController.View.Frame = new RectangleF(screenBounds.Width, 0, fromFrame.Width, fromFrame.Height);
+                        fromViewController.View.Frame = new CGRect(screenBounds.Width, 0, fromFrame.Width, fromFrame.Height);
                         break;
                     case UIInterfaceOrientation.LandscapeRight:
-                        fromViewController.View.Frame = new RectangleF(screenBounds.Width * -1, 0, fromFrame.Width, fromFrame.Height);
+                        fromViewController.View.Frame = new CGRect(screenBounds.Width * -1, 0, fromFrame.Width, fromFrame.Height);
                         break;
                     default:
                         break;

@@ -18,8 +18,8 @@
  */
 
 using System;
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 
 namespace SharpMobileCode.ModalPicker
 {
@@ -47,12 +47,12 @@ namespace SharpMobileCode.ModalPicker
                 switch(value)
                 {
                     case ModalPickerType.Date:
-                        DatePicker = new UIDatePicker(RectangleF.Empty);
+                        DatePicker = new UIDatePicker(CGRect.Empty);
                         PickerView = null;
                         break;
                     case ModalPickerType.Custom:
                         DatePicker = null;
-                        PickerView = new UIPickerView(RectangleF.Empty);
+                        PickerView = new UIPickerView(CGRect.Empty);
                         break;
                     default:
                         break;
@@ -98,7 +98,7 @@ namespace SharpMobileCode.ModalPicker
             View.BackgroundColor = UIColor.Clear;
             _internalView = new UIView();
 
-            _headerLabel = new UILabel(new RectangleF(0, 0, 320/2, 44));
+            _headerLabel = new UILabel(new CGRect(0, 0, 320/2, 44));
             _headerLabel.AutoresizingMask = UIViewAutoresizing.FlexibleWidth;
             _headerLabel.BackgroundColor = HeaderBackgroundColor;
             _headerLabel.TextColor = HeaderTextColor;
@@ -141,36 +141,36 @@ namespace SharpMobileCode.ModalPicker
 
         void Show(bool onRotate = false)
         {
-			var buttonSize = new Size(71, 30);
+			var buttonSize = new CGSize(71, 30);
 
 			var width = _parent.View.Frame.Width;
 
-            var internalViewSize = SizeF.Empty;
+            var internalViewSize = CGSize.Empty;
             switch(_pickerType)
             {
                 case ModalPickerType.Date:
-                    DatePicker.Frame = RectangleF.Empty;
-                    internalViewSize = new SizeF(width, DatePicker.Frame.Height + _headerBarHeight);
+                    DatePicker.Frame = CGRect.Empty;
+                    internalViewSize = new CGSize(width, DatePicker.Frame.Height + _headerBarHeight);
                     break;
                 case ModalPickerType.Custom:
-                    PickerView.Frame = RectangleF.Empty;
-                    internalViewSize = new SizeF(width, PickerView.Frame.Height + _headerBarHeight);
+                    PickerView.Frame = CGRect.Empty;
+                    internalViewSize = new CGSize(width, PickerView.Frame.Height + _headerBarHeight);
                     break;
                 default:
                     break;
             }
 
-            var internalViewFrame = RectangleF.Empty;
+            var internalViewFrame = CGRect.Empty;
 			if (InterfaceOrientation == UIInterfaceOrientation.Portrait)
 			{
 				if (onRotate)
 				{
-					internalViewFrame = new RectangleF(0, View.Frame.Height - internalViewSize.Height,
+					internalViewFrame = new CGRect(0, View.Frame.Height - internalViewSize.Height,
 						internalViewSize.Width, internalViewSize.Height);
 				}
 				else
 				{
-					internalViewFrame = new RectangleF(0, View.Bounds.Height - internalViewSize.Height,
+					internalViewFrame = new CGRect(0, View.Bounds.Height - internalViewSize.Height,
 						internalViewSize.Width, internalViewSize.Height);
 				}
 			}
@@ -178,12 +178,12 @@ namespace SharpMobileCode.ModalPicker
 			{
 				if (onRotate)
 				{
-					internalViewFrame = new RectangleF(0, View.Bounds.Height - internalViewSize.Height,
+					internalViewFrame = new CGRect(0, View.Bounds.Height - internalViewSize.Height,
 						internalViewSize.Width, internalViewSize.Height);
 				}
 				else
 				{
-					internalViewFrame = new RectangleF(0, View.Frame.Height - internalViewSize.Height,
+					internalViewFrame = new CGRect(0, View.Frame.Height - internalViewSize.Height,
 						internalViewSize.Width, internalViewSize.Height);
 				}
 			}
@@ -192,20 +192,20 @@ namespace SharpMobileCode.ModalPicker
             switch(_pickerType)
             {
                 case ModalPickerType.Date:
-                    DatePicker.Frame = new RectangleF(DatePicker.Frame.X, _headerBarHeight, _internalView.Frame.Width,
+                    DatePicker.Frame = new CGRect(DatePicker.Frame.X, _headerBarHeight, _internalView.Frame.Width,
                                                       DatePicker.Frame.Height);
                     break;
                 case ModalPickerType.Custom:
-                    PickerView.Frame = new RectangleF(PickerView.Frame.X, _headerBarHeight, _internalView.Frame.Width,
+                    PickerView.Frame = new CGRect(PickerView.Frame.X, _headerBarHeight, _internalView.Frame.Width,
                                                       PickerView.Frame.Height);
                     break;
                 default:
                     break;
             }
 
-			_headerLabel.Frame = new RectangleF(20+buttonSize.Width, 4, _parent.View.Frame.Width - (40+2*buttonSize.Width), 35);
-			_doneButton.Frame = new RectangleF(internalViewFrame.Width - buttonSize.Width - 10, 7, buttonSize.Width, buttonSize.Height);
-			_cancelButton.Frame = new RectangleF(10, 7, buttonSize.Width, buttonSize.Height);
+			_headerLabel.Frame = new CGRect(20+buttonSize.Width, 4, _parent.View.Frame.Width - (40+2*buttonSize.Width), 35);
+			_doneButton.Frame = new CGRect(internalViewFrame.Width - buttonSize.Width - 10, 7, buttonSize.Width, buttonSize.Height);
+			_cancelButton.Frame = new CGRect(10, 7, buttonSize.Width, buttonSize.Height);
         }
 
         void DoneButtonTapped (object sender, EventArgs e)

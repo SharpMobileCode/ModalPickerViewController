@@ -20,10 +20,10 @@
 using System;
 using System.Collections.Generic;
 
-using MonoTouch.UIKit;
+using UIKit;
 
 using SharpMobileCode.ModalPicker;
-using MonoTouch.Foundation;
+using Foundation;
 
 namespace ModalPickerSample
 {
@@ -107,7 +107,7 @@ namespace ModalPickerSample
             modalPicker.OnModalPickerDismissed += (s, ea) => 
             {
                 var index = modalPicker.PickerView.SelectedRowInComponent(0);
-                PickedLabel.Text = customDatesList[index];
+                PickedLabel.Text = customDatesList[(int)index];
             };
 
             await PresentViewControllerAsync(modalPicker, true);

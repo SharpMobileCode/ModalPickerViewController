@@ -18,8 +18,8 @@
  */
 
 using System;
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 
 namespace SharpMobileCode.ModalPicker
 {
@@ -48,18 +48,18 @@ namespace SharpMobileCode.ModalPicker
 
             inView.AddSubview(toViewController.View);
 
-            toViewController.View.Frame = RectangleF.Empty;
+            toViewController.View.Frame = CGRect.Empty;
 
             var startingPoint = GetStartingPoint(fromViewController.InterfaceOrientation);
             if (fromViewController.InterfaceOrientation == UIInterfaceOrientation.Portrait)
             {
-                toViewController.View.Frame = new RectangleF(startingPoint.X, startingPoint.Y, 
+                toViewController.View.Frame = new CGRect(startingPoint.X, startingPoint.Y, 
                                                              fromViewController.View.Frame.Width,
                                                              fromViewController.View.Frame.Height);
             }
             else
             {
-                toViewController.View.Frame = new RectangleF(startingPoint.X, startingPoint.Y, 
+                toViewController.View.Frame = new CGRect(startingPoint.X, startingPoint.Y, 
                                                              fromViewController.View.Frame.Height,
                                                              fromViewController.View.Frame.Width);
             }
@@ -68,7 +68,7 @@ namespace SharpMobileCode.ModalPicker
                                  () =>
             {
                 var endingPoint = GetEndingPoint(fromViewController.InterfaceOrientation);
-                toViewController.View.Frame = new RectangleF(endingPoint.X, endingPoint.Y, fromViewController.View.Frame.Width,
+                toViewController.View.Frame = new CGRect(endingPoint.X, endingPoint.Y, fromViewController.View.Frame.Width,
                                                                  fromViewController.View.Frame.Height);
                 fromViewController.View.Alpha = 0.5f;
             },
@@ -76,46 +76,46 @@ namespace SharpMobileCode.ModalPicker
                                 );
         }
 
-        PointF GetStartingPoint(UIInterfaceOrientation orientation)
+        CGPoint GetStartingPoint(UIInterfaceOrientation orientation)
         {
             var screenBounds = UIScreen.MainScreen.Bounds;
-            var coordinate = PointF.Empty;
+            var coordinate = CGPoint.Empty;
             switch(orientation)
             {
                 case UIInterfaceOrientation.Portrait:
-                    coordinate = new PointF(0, screenBounds.Height);
+                    coordinate = new CGPoint(0, screenBounds.Height);
                     break;
                 case UIInterfaceOrientation.LandscapeLeft:
-                    coordinate = new PointF(screenBounds.Width, 0);
+                    coordinate = new CGPoint(screenBounds.Width, 0);
                     break;
                 case UIInterfaceOrientation.LandscapeRight:
-                    coordinate = new PointF(screenBounds.Width * -1, 0);
+                    coordinate = new CGPoint(screenBounds.Width * -1, 0);
                     break;
                 default:
-                    coordinate = new PointF(0, screenBounds.Height);
+                    coordinate = new CGPoint(0, screenBounds.Height);
                     break;
             }
 
             return coordinate;
         }
 
-        PointF GetEndingPoint(UIInterfaceOrientation orientation)
+        CGPoint GetEndingPoint(UIInterfaceOrientation orientation)
         {
             var screenBounds = UIScreen.MainScreen.Bounds;
-            var coordinate = PointF.Empty;
+            var coordinate = CGPoint.Empty;
             switch(orientation)
             {
                 case UIInterfaceOrientation.Portrait:
-                    coordinate = new PointF(0, 0);
+                    coordinate = new CGPoint(0, 0);
                     break;
                 case UIInterfaceOrientation.LandscapeLeft:
-                    coordinate = new PointF(0, 0);
+                    coordinate = new CGPoint(0, 0);
                     break;
                 case UIInterfaceOrientation.LandscapeRight:
-                    coordinate = new PointF(0, 0);
+                    coordinate = new CGPoint(0, 0);
                     break;
                 default:
-                    coordinate = new PointF(0, 0);
+                    coordinate = new CGPoint(0, 0);
                     break;
             }
 
