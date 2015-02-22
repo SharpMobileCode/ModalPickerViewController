@@ -1,6 +1,8 @@
 ModalPickerViewController
 ===========
 
+**Update: Now supports 64-bit Unified API!**
+
 The ModalPickerViewController is a view controller that is designed to replace [ActionSheetDatePicker](http://developer.xamarin.com/recipes/ios/standard_controls/actionsheet/actionsheet_date_picker/).  The ActionSheetDatePicker was an example provided by Xamarin to show a nice looking Date Picker that did not take up the whole screen.
 
 Though this did do the job, the UIActionSheet was not designed to be subclassed or views added to its hierarchy.  Starting with iOS 7, Apple started issuing runtime warnings, but did not crash the app.  The warnings looked something like this:
@@ -26,3 +28,4 @@ Ruben Macias @sharpmobilecode
 
 ## License
 Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
+
