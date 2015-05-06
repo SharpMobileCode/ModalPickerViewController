@@ -24,6 +24,7 @@ using UIKit;
 
 using SharpMobileCode.ModalPicker;
 using Foundation;
+using CoreGraphics;
 
 namespace ModalPickerSample
 {
@@ -55,6 +56,7 @@ namespace ModalPickerSample
 			
             DatePickerButton.TouchUpInside += DatePickerButtonTapped;
             CustomPickerButton.TouchUpInside += CustomPickerButtonTapped;
+            SelectDateTextField.ShouldBeginEditing += OnTextFieldShouldBeginEditing;
         }
 
         async void DatePickerButtonTapped (object sender, EventArgs e)
@@ -113,6 +115,32 @@ namespace ModalPickerSample
             await PresentViewControllerAsync(modalPicker, true);
         }
 
+        bool OnTextFieldShouldBeginEditing(UITextField textField)
+        {
+            var modalPicker = new ModalPickerViewController(ModalPickerType.Date, "Select A Date", this)
+            {
+                HeaderBackgroundColor = UIColor.Red,
+                HeaderTextColor = UIColor.White,
+                TransitioningDelegate = new ModalPickerTransitionDelegate(),
+                ModalPresentationStyle = UIModalPresentationStyle.Custom
+            };
+
+            modalPicker.DatePicker.Mode = UIDatePickerMode.Date;
+
+            modalPicker.OnModalPickerDismissed += (s, ea) => 
+            {
+                var dateFormatter = new NSDateFormatter()
+                {
+                    DateFormat = "MMMM dd, yyyy"
+                };
+
+                textField.Text = dateFormatter.ToString(modalPicker.DatePicker.Date);
+            };
+
+            PresentViewController(modalPicker, true, null);
+
+            return false;
+        }
     }
 }
 

@@ -4,10 +4,10 @@
 // actions declared in your storyboard file.
 // Manual changes to this file will not be maintained.
 //
-using System;
 using Foundation;
-using UIKit;
+using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
 namespace ModalPickerSample
 {
@@ -26,6 +26,10 @@ namespace ModalPickerSample
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel PickedLabel { get; set; }
 
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UITextField SelectDateTextField { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (CustomPickerButton != null) {
@@ -39,6 +43,10 @@ namespace ModalPickerSample
 			if (PickedLabel != null) {
 				PickedLabel.Dispose ();
 				PickedLabel = null;
+			}
+			if (SelectDateTextField != null) {
+				SelectDateTextField.Dispose ();
+				SelectDateTextField = null;
 			}
 		}
 	}
