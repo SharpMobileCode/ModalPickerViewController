@@ -149,11 +149,9 @@ namespace SharpMobileCode.ModalPicker
             switch(_pickerType)
             {
                 case ModalPickerType.Date:
-                    DatePicker.Frame = CGRect.Empty;
                     internalViewSize = new CGSize(width, DatePicker.Frame.Height + _headerBarHeight);
                     break;
                 case ModalPickerType.Custom:
-                    PickerView.Frame = CGRect.Empty;
                     internalViewSize = new CGSize(width, PickerView.Frame.Height + _headerBarHeight);
                     break;
                 default:
